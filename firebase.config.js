@@ -1,5 +1,11 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  onAuthStateChanged,
+  signOut,
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCSl1_8J03A-a594iZoWaOjYWjDeESrsAE",
@@ -11,8 +17,38 @@ const firebaseConfig = {
 };
 
 export async function signIn() {
-  var provider = new GoogleAuthProvider();
+  const provider = new GoogleAuthProvider();
   await signInWithPopup(getAuth(), provider);
+  /*
+  var provider = new GoogleAuthProvider();
+  await signInWithPopup(getAuth(), provider).then(function (result) {
+    const user = result.user;
+    console.log(user.displayName);
+  });
+  */
+}
+
+function signOutUser() {
+  // Sign out of Firebase.
+  signOut(getAuth());
+}
+
+// Initialize firebase auth
+function initFirebaseAuth() {
+  // Listen to auth state changes.
+  onAuthStateChanged(getAuth(), authStateObserver);
+}
+
+function authStateObserver(user) {
+  if (user) {
+    // User is signed in!
+    console.log("You're signed In");
+    console.log(user.displayName);
+  } else {
+    // User is signed out!
+    console.log("You're signed out");
+  }
 }
 
 initializeApp(firebaseConfig);
+initFirebaseAuth();

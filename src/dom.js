@@ -8,7 +8,12 @@ const ratingUI = document.querySelector(".book-Rating");
 
 const signInButton = document.querySelector(".signInBtn");
 
-signInButton.addEventListener("click", signIn);
+signInButton.addEventListener("click", userSignIn);
+
+function userSignIn() {
+  signIn();
+}
+//Gets the specific book data and displays it on the UI when the function is called
 
 function updateDisplay(book) {
   book
