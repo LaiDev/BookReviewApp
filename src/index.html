@@ -15,7 +15,6 @@
           <a class="logo" href="#">YouReview</a>
         </div>
         <div class="right-header">
-          <li><a href="#">Aalaizha Benjamin</a></li>
           <form onsubmit="return false" action="">
             <input
               type="text"
@@ -26,7 +25,14 @@
             />
             <button id="searchBtn" type="submit">Search</button>
           </form>
-          <button class="signOutBtn"><a href="#">Sign out</a></button>
+          <section class="signedIn" hidden="true">
+            <li><a href="#">Aalaizha Benjamin</a></li>
+            <button class="signOutBtn"><a href="#">Sign out</a></button>
+          </section>
+
+          <section class="signedOut">
+            <button class = "signInBtn">Sign In with Google</button>
+          </section>
         </div>
       </nav>
     </header>
