@@ -6,20 +6,7 @@ const coverUI = document.querySelector(".book-Cover");
 const authorUi = document.querySelector(".author");
 const ratingUI = document.querySelector(".book-Rating");
 
-const signInButton = document.querySelector(".signInBtn");
-const signOutButton = document.querySelector(".signOutBtn");
 
-signInButton.addEventListener("click", userSignIn);
-
-signOutButton.addEventListener("click", userSignOut);
-
-function userSignIn() {
-  signIn();
-}
-
-function userSignOut() {
-  signOutUser();
-}
 //Gets the specific book data and displays it on the UI when the function is called
 
 function updateDisplay(book) {
@@ -36,18 +23,30 @@ function updateDisplay(book) {
     .catch((error) => console.log("There is an ERROR!"));
 }
 
+//Auth DOM events
+
+const signInButton = document.querySelector(".signInBtn");
+const signOutButton = document.querySelector(".signOutBtn");
+
+signInButton.addEventListener("click", signIn());
+signOutButton.addEventListener("click", signOutUser());
+
 const signedInNav = document.querySelector(".signedIn");
 const signedInName = document.querySelector(".userName");
 const signedOutNav = document.querySelector(".signedOut");
+
+//Handles functionality of the nav bar when a user is logged in
 function showSignedInNavBar(userName) {
   signedOutNav.style.display = "none";
+  signedInName.innerText = userName;
+
   signedInNav.style.display = "flex";
   signedInNav.style.justifyContent = "center";
   signedInNav.style.alignItems = "center";
   signedInNav.style.gap = "25px";
-  signedInName.innerText = userName;
 }
 
+////Handles functionality of the nav bar when a user is not logged in
 function showSignedOutNavBar() {
   signedInNav.style.display = "none";
   signedOutNav.style.display = "flex";
