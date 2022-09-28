@@ -2,12 +2,12 @@
   margin: 0;
   padding: 0;
 }
-body {
+main {
   display: flex;
   flex-direction: column;
   background-color: rgb(36, 37, 44);
 }
-main {
+#bookSearchContainer {
   align-self: center;
   width: 80vw;
   height: 92vh;
@@ -43,6 +43,13 @@ a {
 li {
   list-style-type: none;
 }
+
+.userName {
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+
 .signOutBtn,
 .signInBtn {
   border: none;
