@@ -20,26 +20,19 @@ const firebaseConfig = {
 export async function signIn() {
   const provider = new GoogleAuthProvider();
   await signInWithPopup(getAuth(), provider);
-  /*
-  var provider = new GoogleAuthProvider();
-  await signInWithPopup(getAuth(), provider).then(function (result) {
-    const user = result.user;
-    console.log(user.displayName);
-  });
-  */
 }
 
 export function signOutUser() {
-  console.log("sign out");
   // Sign out of Firebase.
   signOut(getAuth());
 }
 // Initialize firebase auth
 function initFirebaseAuth() {
-  // Listen to auth state changes.
+  // Listens to state changes - If user is signed in or signed out.
   onAuthStateChanged(getAuth(), authStateObserver);
 }
 
+//Handles what happens in different auth states
 function authStateObserver(user) {
   if (user) {
     // User is signed in!
