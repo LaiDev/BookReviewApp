@@ -6,6 +6,7 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
+import { showSignedInNavBar, showSignedOutNavBar } from "./src/dom";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCSl1_8J03A-a594iZoWaOjYWjDeESrsAE",
@@ -28,11 +29,11 @@ export async function signIn() {
   */
 }
 
-function signOutUser() {
+export function signOutUser() {
+  console.log("sign out");
   // Sign out of Firebase.
   signOut(getAuth());
 }
-
 // Initialize firebase auth
 function initFirebaseAuth() {
   // Listen to auth state changes.
@@ -43,10 +44,11 @@ function authStateObserver(user) {
   if (user) {
     // User is signed in!
     console.log("You're signed In");
-    console.log(user.displayName);
+    showSignedInNavBar(user.displayName);
   } else {
     // User is signed out!
     console.log("You're signed out");
+    showSignedOutNavBar();
   }
 }
 
