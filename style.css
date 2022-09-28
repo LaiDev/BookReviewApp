@@ -7,13 +7,14 @@ main {
   flex-direction: column;
   background-color: rgb(36, 37, 44);
 }
-#bookSearchContainer {
+#bookSearchContainer,
+#userReviewContainer {
   align-self: center;
   width: 80vw;
-  height: 92vh;
+  min-height: 92vh;
   display: grid;
-  grid-template-columns: 1fr 1fr;
 }
+
 nav {
   display: flex;
   align-items: center;
@@ -114,4 +115,49 @@ li {
 
 .author {
   font-size: 1rem;
+}
+
+#bookSearchContainer {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+}
+
+#userReviewContainer {
+  color: white;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-Container {
+  display: flex;
+  flex-wrap: wrap;
+
+  width: 80vw;
+  height: auto;
+  gap: 10px;
+  align-items: center;
+
+  margin-top: 50px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 300px;
+  visibility: hidden;
+}
+
+.reviewField {
+  max-width: 297px;
+  max-height: 200px;
+}
+
+.reviewCard {
+  border: 2px white solid;
+  border-radius: 5px;
+  max-width: fit-content;
+  padding: 10px;
+  overflow: scroll;
 }
