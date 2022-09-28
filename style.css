@@ -44,8 +44,8 @@ li {
   list-style-type: none;
 }
 
-.userName {
-  background-color: transparent;
+#navButtons {
+  background-color: rgb(36, 37, 44);
   border: none;
   color: white;
 }
