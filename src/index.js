@@ -4,9 +4,9 @@ import { updateDisplay } from "./dom";
 let bookTitle = document.querySelector("#bookTitle");
 let searchBtn = document.querySelector("#searchBtn");
 
-searchBtn.addEventListener("click", handleThis);
+searchBtn.addEventListener("click", updateUI);
 
-function handleThis() {
+function updateUI() {
   let book = getBookData(bookTitle.value);
   updateDisplay(book);
   bookTitle.value = "";
