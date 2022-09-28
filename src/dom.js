@@ -15,7 +15,7 @@ function updateDisplay(book) {
       ratingUI.innerText = `${bookData.items[0].volumeInfo.averageRating}/5`;
       console.log(bookData.items[0].volumeInfo.averageRating);
     })
-    .catch((error) => console.log("Error!"));
+    .catch((error) => console.log("There is an ERROR!"));
 }
 
 export { updateDisplay };
