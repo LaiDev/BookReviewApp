@@ -1,8 +1,14 @@
+import { signIn } from "../firebase.config";
+
 const titleUI = document.querySelector(".book-Title");
 const descriptionUI = document.querySelector(".book-Description");
 const coverUI = document.querySelector(".book-Cover");
 const authorUi = document.querySelector(".author");
 const ratingUI = document.querySelector(".book-Rating");
+
+const signInButton = document.querySelector(".signInBtn");
+
+signInButton.addEventListener("click", signIn);
 
 function updateDisplay(book) {
   book
