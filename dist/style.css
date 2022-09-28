@@ -26,7 +26,7 @@ nav {
 }
 
 a {
-color: white;
+  color: white;
   text-decoration: none;
 }
 
@@ -44,6 +44,14 @@ li {
   list-style-type: none;
 }
 
+#bookTitle
+{
+  width: 150px;
+  border: none;
+  border-radius: 3px;
+  padding: 3px;
+}
+
 .signOutBtn {
   border: none;
   border-radius: 5px;
@@ -53,7 +61,6 @@ li {
 
 .left-Grid,
 .right-Grid {
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,20 +71,32 @@ li {
   height: 700px;
   background-image: url("https://mpd-biblio-covers.imgix.net/9781250044662.jpg?w=900");
   background-position: center;
-  background-size:contain;
+  background-size: contain;
   background-repeat: no-repeat;
+  image-rendering: auto;
 }
 
 .book-Info {
-  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  max-width: 600px;
+  max-height: 500px;
   height: auto;
-
-  line-height: 2;
+  padding: 10px;
   color: white;
-
 }
 
-.book-Title
-{
-    font-size: 3rem;
+.book-Description {
+  line-height: 25px;
+  overflow: scroll;
+}
+
+.book-Title {
+  font-size: 3rem;
+}
+
+.author {
+  font-size: 1rem;
 }
