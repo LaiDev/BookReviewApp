@@ -61,7 +61,21 @@
           </div>
         </section>
       </section>
-      <section id="userReviewContainer"></section>
+      <section id="userReviewContainer">
+        <h1>My Reviews</h1>
+        <form onsubmit="return false" action="" class="form">
+          <input type="text" name="BookTitle" id="book-Title" />
+          <textarea
+            name="reviewField"
+            id="reviewField"
+            cols="30"
+            rows="10"
+          ></textarea>
+          <button class="submitButton">Create Review</button>
+        </form>
+        <button class="addReviewButton">Add Review</button>
+        <div class="review-Container"></div>
+      </section>
     </main>
   </body>
 </html>

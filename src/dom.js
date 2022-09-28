@@ -6,7 +6,6 @@ const coverUI = document.querySelector(".book-Cover");
 const authorUi = document.querySelector(".author");
 const ratingUI = document.querySelector(".book-Rating");
 
-
 //Gets the specific book data and displays it on the UI when the function is called
 
 function updateDisplay(book) {
@@ -52,4 +51,48 @@ function showSignedOutNavBar() {
   signedOutNav.style.display = "flex";
 }
 
-export { updateDisplay, showSignedInNavBar, showSignedOutNavBar };
+const reviewContainer = document.querySelector(".review-Container");
+
+function createReviewCard(bookTitle, myReview) {
+  let cardDiv = document.createElement("div");
+  cardDiv.classList.add("reviewCard");
+  reviewContainer.append(cardDiv);
+
+  let title = document.createElement("p");
+  title.innerHTML = bookTitle;
+  title.classList.add("cardTitle");
+  cardDiv.append(title);
+
+  let description = document.createElement("p");
+  description.innerHTML = myReview;
+  description.classList.add("cardDescription");
+  cardDiv.append(description);
+
+  reviewContainer.append(cardDiv);
+}
+
+//Form Events
+const showFormBtn = document.querySelector(".addReviewButton");
+const submitButton = document.querySelector(".submitButton");
+const form = document.querySelector(".form");
+
+showFormBtn.addEventListener("click", () => {
+  form.style.visibility = "visible";
+});
+submitButton.addEventListener("click", handleForm);
+
+function handleForm() {
+  let formBookTitle = document.querySelector("#book-Title");
+  let reviewInfo = document.querySelector("#reviewField");
+  createReviewCard(formBookTitle.value, reviewInfo.value);
+  formBookTitle.value = "";
+  reviewInfo.value;
+  form.style.visibility = "hidden";
+}
+
+export {
+  updateDisplay,
+  showSignedInNavBar,
+  showSignedOutNavBar,
+  createReviewCard,
+};
