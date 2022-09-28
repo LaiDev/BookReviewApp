@@ -1,4 +1,7 @@
-console.log("Hello Webpack!");
+
+//Uses a book title to return an object containing information about the book.
+
+//To Do : Add a more specific way to search for books
 
 export async function getBookData(bookTitle) {
   const bookData = await fetch(
@@ -9,11 +12,5 @@ export async function getBookData(bookTitle) {
 
   const data = await bookData.json();
 
-  /*
-
-  console.log(data.items[0].volumeInfo.title);
-  console.log(data.items[0].volumeInfo.description);
-  console.log(data.items[0].volumeInfo.averageRating);
-*/
   return data;
 }
