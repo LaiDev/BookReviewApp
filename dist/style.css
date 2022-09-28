@@ -108,3 +108,7 @@ li {
 .author {
   font-size: 1rem;
 }
+
+.signedIn {
+  display: none;
+}
