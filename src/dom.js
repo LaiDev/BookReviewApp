@@ -1,4 +1,4 @@
-import { signIn, signOutUser } from "../firebase.config";
+import { saveReview, signIn, signOutUser } from "../firebase.config";
 
 const titleUI = document.querySelector(".book-Title");
 const descriptionUI = document.querySelector(".book-Description");
@@ -85,8 +85,11 @@ function handleForm() {
   let formBookTitle = document.querySelector("#book-Title");
   let reviewInfo = document.querySelector("#reviewField");
   createReviewCard(formBookTitle.value, reviewInfo.value);
+  //reviewInfo.value;
+
+  saveReview(formBookTitle.value, reviewInfo.value);
   formBookTitle.value = "";
-  reviewInfo.value;
+
   form.style.visibility = "hidden";
 }
 

@@ -6,6 +6,20 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  query,
+  orderBy,
+  limit,
+  onSnapshot,
+  setDoc,
+  updateDoc,
+  doc,
+  serverTimestamp,
+} from "firebase/firestore";
 import { showSignedInNavBar, showSignedOutNavBar } from "./src/dom";
 
 const firebaseConfig = {
@@ -16,6 +30,12 @@ const firebaseConfig = {
   messagingSenderId: "533512563552",
   appId: "1:533512563552:web:496a052a8c9290e0c20c05",
 };
+
+// Initialize  Firebase
+initializeApp(firebaseConfig);
+initFirebaseAuth();
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore();
 
 export async function signIn() {
   const provider = new GoogleAuthProvider();
@@ -45,5 +65,45 @@ function authStateObserver(user) {
   }
 }
 
-initializeApp(firebaseConfig);
-initFirebaseAuth();
+function getUserName() {
+  return getAuth().currentUser.displayName;
+}
+
+function getUserUID() {
+  return getAuth().currentUser.uid;
+}
+
+const form = document.querySelector(".form");
+
+// Saves a new message to Cloud Firestore.
+export async function saveReview(titleText, reviewText) {
+  // Add a new message entry to the Firebase database.
+  try {
+    await addDoc(collection(getFirestore(), "reviews"), {
+      name: getUserName(),
+      bookTitle: titleText,
+      text: reviewText,
+      timestamp: serverTimestamp(),
+      uid: getUserUID(),
+    });
+  } catch (error) {
+    console.error("Error writing new message to Firebase Database", error);
+  }
+}
+
+const colRef = collection(db, "reviews");
+
+//Gets the data from the firestore collection
+async function getData() {
+  await getDocs(colRef)
+    .then((data) => {
+      let reviews = [];
+      data.docs.forEach((doc) => {
+        reviews.push({ ...doc.data(), id: doc.id });
+      });
+      console.log(reviews);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
