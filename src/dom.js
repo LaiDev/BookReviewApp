@@ -1,5 +1,3 @@
-import { saveReview, signIn, signOutUser } from "../firebase.config";
-
 const titleUI = document.querySelector(".book-Title");
 const descriptionUI = document.querySelector(".book-Description");
 const coverUI = document.querySelector(".book-Cover");
@@ -13,7 +11,7 @@ function updateDisplay(book) {
     .then(function (bookData) {
       titleUI.innerText = bookData.items[0].volumeInfo.title;
       descriptionUI.innerText = bookData.items[0].volumeInfo.description;
-      let bookCover = bookData.items[0].volumeInfo.imageLinks.thumbnail;
+      let bookCover = bookData.items[0].volumebInfo.imageLinks.thumbnail;
       coverUI.style.backgroundImage = `url(${bookCover})`;
       authorUi.innerText = bookData.items[0].volumeInfo.authors;
       ratingUI.innerText = `${bookData.items[0].volumeInfo.averageRating}/5`;
@@ -21,14 +19,6 @@ function updateDisplay(book) {
     })
     .catch((error) => console.log("There is an ERROR!"));
 }
-
-//Auth DOM events
-
-const signInButton = document.querySelector(".signInBtn");
-const signOutButton = document.querySelector(".signOutBtn");
-
-signInButton.addEventListener("click", signIn());
-signOutButton.addEventListener("click", signOutUser());
 
 const signedInNav = document.querySelector(".signedIn");
 const signedInName = document.querySelector(".userName");
@@ -85,9 +75,7 @@ function handleForm() {
   let formBookTitle = document.querySelector("#book-Title");
   let reviewInfo = document.querySelector("#reviewField");
   createReviewCard(formBookTitle.value, reviewInfo.value);
-  //reviewInfo.value;
 
-  saveReview(formBookTitle.value, reviewInfo.value);
   formBookTitle.value = "";
 
   form.style.visibility = "hidden";
