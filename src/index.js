@@ -115,10 +115,9 @@ async function getData(user) {
 
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
 
     console.log(doc.data());
-
+    //Creates a card to display on the UI with the data received from the database
     createReviewCard(doc.data().bookTitle, doc.data().review);
   });
 }
