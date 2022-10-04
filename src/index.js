@@ -13,8 +13,23 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
-import { getBookData } from "./bookData";
+import { where, getDocs } from "firebase/firestore";
 
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  query,
+  orderBy,
+  limit,
+  onSnapshot,
+  setDoc,
+  updateDoc,
+  doc,
+  serverTimestamp,
+} from "firebase/firestore";
+import { getBookData } from "./bookData";
+console.log("Bleh");
 const signInButton = document.querySelector(".signInBtn");
 const signOutButton = document.querySelector(".signOutBtn");
 
@@ -38,19 +53,11 @@ function authStateObserver(user) {
   if (user) {
     // User is signed in!
     showSignedInNavBar(user.displayName);
-    //Example Review Cards
-    createReviewCard(
-      "Where the Wild things are",
-      "A wonderful book with a memorab;e plot but weird characters"
-    );
-    createReviewCard("Renegades", "A wonderful book with a good plot");
-    createReviewCard("Renegades", "A wonderful book with a good plot");
-    createReviewCard("Renegades", "A wonderful book with a good plot");
-    createReviewCard("Renegades", "A wonderful book with a good plot");
-    createReviewCard(
-      "Renegades",
-      "A wonderful book with a good plot and good characters"
-    );
+
+    //Get previous reviews from the database
+    getData(user);
+
+    //Enable ability to add reviews
   } else {
     // User is signed out!
     showSignedOutNavBar();
@@ -66,9 +73,10 @@ function signOutUser() {
   signOut(getAuth());
 }
 
+
 let bookTitle = document.querySelector("#bookTitle");
 let searchBtn = document.querySelector("#searchBtn");
-let addReviewBtn = document.querySelector(".addReviewButton");
+
 
 searchBtn.addEventListener("click", updateUI);
 
@@ -82,3 +90,32 @@ function updateUI() {
 initializeApp(firebaseAppConfig);
 // Initialize firebase auth
 initFirebaseAuth();
+// Initialize Cloud Firestore and get a reference to the service
+
+// Saves a new review to Cloud Firestore.
+export async function addReview(bookTitle, reviewText) {
+  try {
+    const docRef = await addDoc(collection(getFirestore(), "reviews"), {
+      bookTitle: bookTitle,
+      review: reviewText,
+      user: getAuth().currentUser.uid,
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (error) {
+    console.error("Error writing new message to Firebase Database", error);
+  }
+}
+
+//When called, this function will check to see if there is any data stored that matched the user id of the current user
+async function getData(user) {
+  const q = query(
+    collection(getFirestore(), "reviews"),
+    where("user", "==", user.uid)
+  );
+
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(doc.id, " => ", doc.data());
+  });
+}
