@@ -62,6 +62,7 @@ function authStateObserver(user) {
   } else {
     // User is signed out!
     showSignedOutNavBar();
+    reviewContainer.replaceChildren();
   }
 }
 
