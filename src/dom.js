@@ -1,3 +1,5 @@
+import { addReview } from "./index.js";
+
 const titleUI = document.querySelector(".book-Title");
 const descriptionUI = document.querySelector(".book-Description");
 const coverUI = document.querySelector(".book-Cover");
@@ -23,6 +25,7 @@ function updateDisplay(book) {
 const signedInNav = document.querySelector(".signedIn");
 const signedInName = document.querySelector(".userName");
 const signedOutNav = document.querySelector(".signedOut");
+const addReviewBtn = document.querySelector(".addReviewButton");
 
 //Handles functionality of the nav bar when a user is logged in
 function showSignedInNavBar(userName) {
@@ -33,12 +36,15 @@ function showSignedInNavBar(userName) {
   signedInNav.style.justifyContent = "center";
   signedInNav.style.alignItems = "center";
   signedInNav.style.gap = "25px";
+
+  addReviewBtn.style.visibility = "visible";
 }
 
 ////Handles functionality of the nav bar when a user is not logged in
 function showSignedOutNavBar() {
   signedInNav.style.display = "none";
   signedOutNav.style.display = "flex";
+  addReviewBtn.style.visibility = "hidden";
 }
 
 const reviewContainer = document.querySelector(".review-Container");
@@ -75,6 +81,7 @@ function handleForm() {
   let formBookTitle = document.querySelector("#book-Title");
   let reviewInfo = document.querySelector("#reviewField");
   createReviewCard(formBookTitle.value, reviewInfo.value);
+  addReview(formBookTitle.value, reviewInfo.value);
 
   formBookTitle.value = "";
 
