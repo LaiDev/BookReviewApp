@@ -29,9 +29,10 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import { getBookData } from "./bookData";
-console.log("Bleh");
+
 const signInButton = document.querySelector(".signInBtn");
 const signOutButton = document.querySelector(".signOutBtn");
+const reviewContainer = document.querySelector(".review-Container");
 
 signInButton.addEventListener("click", signIn);
 signOutButton.addEventListener("click", signOutUser);
@@ -73,10 +74,8 @@ function signOutUser() {
   signOut(getAuth());
 }
 
-
 let bookTitle = document.querySelector("#bookTitle");
 let searchBtn = document.querySelector("#searchBtn");
-
 
 searchBtn.addEventListener("click", updateUI);
 
@@ -116,6 +115,9 @@ async function getData(user) {
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, " => ", doc.data());
+
+    console.log(doc.data());
+
+    createReviewCard(doc.data().bookTitle, doc.data().review);
   });
 }
