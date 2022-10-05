@@ -55,8 +55,6 @@ a {
   align-items: center;
 }
 
-
-
 li {
   list-style-type: none;
 }
@@ -65,6 +63,19 @@ li {
   background-color: rgb(36, 37, 44);
   border: none;
   color: white;
+}
+
+.myReviewBtn:hover,
+.homeBtn:hover {
+  text-decoration: underline;
+  text-decoration-color: white;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+
+.username {
+  color: rgb(131, 233, 228);
+  font-weight: bold;
 }
 
 .signOutBtn,
