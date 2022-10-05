@@ -103,19 +103,20 @@ function handleForm() {
   form.style.visibility = "hidden";
 }
 
-const homeBtn = document.querySelector(".homeBtn");
+const discoverBtn = document.querySelector(".discoverBtn");
 const reviewBtn = document.querySelector(".myReviewBtn");
 const bookSearchContainer = document.querySelector("#bookSearchContainer");
 const userReviewContainer = document.querySelector("#userReviewContainer");
-const searchBar = document.querySelector(".descriptionNav");
+const discoverSection = document.querySelector(".discoverSection");
+const mainContentSection = document.querySelector(".mainContent");
+const quoteContainer = document.querySelector(".quoteContainer");
 
-homeBtn.addEventListener("click", showBookDescription);
+discoverBtn.addEventListener("click", showBookDescription);
 reviewBtn.addEventListener("click", showMyReviews);
 
 function showMyReviews() {
   //Hide book description
-  bookSearchContainer.style.display = "none";
-  searchBar.style.visibility = "hidden";
+  discoverSection.style.display = "none";
 
   //Show my reviews
   userReviewContainer.style.display = "flex";
@@ -124,10 +125,12 @@ function showMyReviews() {
 function showBookDescription() {
   //Hide user reviews
   userReviewContainer.style.display = "none";
+  bookSearchContainer.style.display = "none";
 
   //Show book description
-  bookSearchContainer.style.display = "grid";
-  searchBar.style.visibility = "visible";
+  discoverSection.style.display = "flex";
+
+  quoteContainer.style.disply = "flex";
 }
 export {
   updateDisplay,

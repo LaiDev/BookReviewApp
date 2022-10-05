@@ -80,9 +80,15 @@ function signOutUser() {
 let bookTitle = document.querySelector("#bookTitle");
 let searchBtn = document.querySelector("#searchBtn");
 
+let quoteContainer = document.querySelector(".quoteContainer");
+let bookSearchContainer = document.querySelector("#bookSearchContainer");
 searchBtn.addEventListener("click", updateUI);
 
 function updateUI() {
+  //When you do your first search, remove the quote container and add the book container
+  quoteContainer.style.display = "none";
+  //Show book description
+  bookSearchContainer.style.display = "grid";
   let book = getBookData(bookTitle.value);
   updateDisplay(book);
   bookTitle.value = "";
