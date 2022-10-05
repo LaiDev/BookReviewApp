@@ -12,7 +12,20 @@ main {
   align-self: center;
   width: 80vw;
   min-height: 92vh;
+}
+
+#bookSearchContainer {
+  grid-template-columns: 1fr 1fr;
   display: grid;
+}
+
+#userReviewContainer {
+  display: none;
+  color: white;
+  margin-top: 10px;
+  align-items: center;
+  flex-direction: column;
+
 }
 
 nav {
@@ -37,8 +50,14 @@ a {
 
 .right-header {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
   gap: 50px;
   align-items: center;
+}
+
+.descriptionNav {
+  visibility: hidden;
 }
 
 li {
@@ -117,18 +136,6 @@ li {
   font-size: 1rem;
 }
 
-#bookSearchContainer {
-  display: none;
-  grid-template-columns: 1fr 1fr;
-}
-
-#userReviewContainer {
-  color: white;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
-
 .review-Container {
   display: flex;
   flex-wrap: wrap;
@@ -154,10 +161,23 @@ li {
   max-height: 200px;
 }
 
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
 .reviewCard {
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  gap: 30px;
+
+  font-size: 1rem;
+  line-height: 1.6rem;
+
   border: 2px white solid;
   border-radius: 5px;
-  max-width: fit-content;
-  padding: 10px;
+  max-width: 350px;
+  max-height: 150px;
   overflow: scroll;
 }
