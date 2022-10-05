@@ -129,7 +129,7 @@ function showBookDescription() {
 
   //Show book description
   discoverSection.style.display = "flex";
-
+  mainContentSection.style.display = "flex";
   quoteContainer.style.disply = "flex";
 }
 export {
