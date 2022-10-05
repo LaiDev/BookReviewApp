@@ -2,21 +2,126 @@
   margin: 0;
   padding: 0;
 }
+body {
+  background-color: rgb(36, 37, 44);
+}
 main {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 2px rgb(255, 255, 255) solid;
+  padding: 0px 20px;
+  min-height: 8vh;
+}
+.discoverSection {
+  color: white;
+
+  width: 1920px;
+  max-width: 1920px;
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  font-size: 3rem;
+  margin: 20px 0px;
+}
+#searchBtn {
+  padding: 5px;
+  width: 100px;
+  border: none;
+  border-radius: 5px;
+}
+
+#bookTitle {
+  color: white;
+  border: none;
+  font-size: 0.75rem;
   background-color: rgb(36, 37, 44);
 }
+
+.searchBar {
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 10px;
+  width: fit-content;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 2rem;
+
+  height: 50vh;
+}
+
+.quoteContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border: 2px solid white;
+  box-shadow: -10px 5px 5px rgba(180, 255, 230, 0.685);
+  width: 100%;
+  height: 50%;
+
+  padding: 10px 0px;
+  border-radius: 5px;
+}
+
+h3 {
+  margin-left: 10px;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+.bookContainer {
+  display: flex;
+  gap: 25px;
+  height: 25vh;
+  justify-content: space-between;
+  margin: 0px 10px;
+}
+
+.bookHolder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.bookHolder p {
+  font-size: 1.5rem;
+}
+
+.bookCover {
+  height: auto;
+  width: 250px;
+  background-color: gray;
+}
+
 #bookSearchContainer,
 #userReviewContainer {
   align-self: center;
-  width: 80vw;
-  min-height: 92vh;
 }
 
 #bookSearchContainer {
   grid-template-columns: 1fr 1fr;
-  display: grid;
+  display: none;
+  border: 2px solid white;
+  border-radius: 5px;
+  box-shadow: -10px 5px 5px rgba(180, 255, 230, 0.685);
 }
 
 #userReviewContainer {
@@ -25,17 +130,6 @@ main {
   margin-top: 10px;
   align-items: center;
   flex-direction: column;
-}
-
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  background-color: rgb(36, 37, 44);
-  border-bottom: 2px rgb(255, 255, 255) solid;
-  height: 75px;
-  padding: 0px 20px;
 }
 
 a {
@@ -74,7 +168,6 @@ li {
 }
 
 .username {
-  color: rgb(131, 233, 228);
   font-weight: bold;
 }
 
@@ -87,21 +180,6 @@ li {
   color: white;
 }
 
-#searchBtn {
-  padding: 4px;
-  border: none;
-  border-radius: 3px;
-}
-
-#bookTitle {
-  color: white;
-  width: 150px;
-  padding: 3px;
-  border: 2px white solid;
-  border-radius: 5px;
-  background-color: rgb(36, 37, 44);
-}
-
 .left-Grid,
 .right-Grid {
   display: flex;
@@ -110,13 +188,17 @@ li {
 }
 
 .book-Cover {
-  width: 650px;
-  height: 700px;
-  background-image: url("https://mpd-biblio-covers.imgix.net/9781250044662.jpg?w=900");
+  width: 400px;
+  height: 400px;
+  background-image: url("");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
   image-rendering: auto;
+}
+
+.book-Rating {
+  font-size: 1.5rem;
 }
 
 .book-Info {
@@ -124,20 +206,21 @@ li {
   flex-direction: column;
   gap: 25px;
 
-  max-width: 600px;
-  max-height: 500px;
+  max-width: 400px;
+  max-height: 400px;
   height: auto;
   padding: 10px;
   color: white;
 }
 
 .book-Description {
-  line-height: 25px;
+  line-height: 20px;
   overflow: scroll;
+  font-size: 1rem;
 }
 
 .book-Title {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .author {
