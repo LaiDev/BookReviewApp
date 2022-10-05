@@ -186,8 +186,8 @@ li {
   border: 2px white solid;
   border-radius: 5px;
 
-  max-width: 250px;
-  max-height: 120px;
+  max-width: 300px;
+  max-height: 80px;
   overflow: scroll;
 }
 
