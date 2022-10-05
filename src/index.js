@@ -49,6 +49,7 @@ function isUserSignedIn() {
   return !!getAuth().currentUser;
 }
 
+
 //Handles what happens in different auth states
 function authStateObserver(user) {
   if (user) {

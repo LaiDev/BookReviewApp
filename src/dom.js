@@ -88,6 +88,29 @@ function handleForm() {
   form.style.visibility = "hidden";
 }
 
+const homeBtn = document.querySelector(".homeBtn");
+const reviewBtn = document.querySelector(".myReviewBtn");
+const bookSearchContainer = document.querySelector("#bookSearchContainer");
+const userReviewContainer = document.querySelector("#userReviewContainer");
+
+homeBtn.addEventListener("click", showBookDescription);
+reviewBtn.addEventListener("click", showMyReviews);
+
+function showMyReviews() {
+  //Hide book description
+  bookSearchContainer.style.display = "none";
+
+  //Show my reviews
+  userReviewContainer.style.display = "flex";
+}
+
+function showBookDescription() {
+  //Hide user reviews
+  userReviewContainer.style.display = "none";
+
+  //Show book description
+  bookSearchContainer.style.display = "grid";
+}
 export {
   updateDisplay,
   showSignedInNavBar,
