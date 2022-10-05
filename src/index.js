@@ -33,6 +33,7 @@ import { getBookData } from "./bookData";
 const signInButton = document.querySelector(".signInBtn");
 const signOutButton = document.querySelector(".signOutBtn");
 const reviewContainer = document.querySelector(".review-Container");
+const signInMessage = document.querySelector(".signInMessage");
 
 signInButton.addEventListener("click", signIn);
 signOutButton.addEventListener("click", signOutUser);
@@ -49,13 +50,12 @@ function isUserSignedIn() {
   return !!getAuth().currentUser;
 }
 
-
 //Handles what happens in different auth states
 function authStateObserver(user) {
   if (user) {
     // User is signed in!
     showSignedInNavBar(user.displayName);
-
+    signInMessage.style.display = "none";
     //Get previous reviews from the database
     getData(user);
 
@@ -64,6 +64,7 @@ function authStateObserver(user) {
     // User is signed out!
     showSignedOutNavBar();
     reviewContainer.replaceChildren();
+    signInMessage.style.display = "block";
   }
 }
 
@@ -116,7 +117,6 @@ async function getData(user) {
 
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
-
     console.log(doc.data());
     //Creates a card to display on the UI with the data received from the database
     createReviewCard(doc.data().bookTitle, doc.data().review);

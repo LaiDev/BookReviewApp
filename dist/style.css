@@ -25,7 +25,6 @@ main {
   margin-top: 10px;
   align-items: center;
   flex-direction: column;
-
 }
 
 nav {
@@ -177,7 +176,12 @@ li {
 
   border: 2px white solid;
   border-radius: 5px;
-  max-width: 350px;
-  max-height: 150px;
+
+  max-width: 250px;
+  max-height: 120px;
   overflow: scroll;
+}
+
+.signInMessage {
+  color: rgb(245, 109, 109);
 }

@@ -26,7 +26,9 @@
             <button id="searchBtn" type="submit">Search</button>
           </form>
           <li><button class="homeBtn" id="navButtons">Home</button></li>
-          <li><button class = "myReviewBtn" id="navButtons">My Reviews</button></li>
+          <li>
+            <button class="myReviewBtn" id="navButtons">My Reviews</button>
+          </li>
           <section class="signedIn">
             <li><button id="navButtons" class="userName"></button></li>
             <button class="signOutBtn"><a href="#">Sign out</a></button>
@@ -64,6 +66,7 @@
       </section>
       <section id="userReviewContainer">
         <h1>My Reviews</h1>
+        <h2 class="signInMessage">Sign In to Add/See Reviews</h2>
         <form onsubmit="return false" action="" class="form">
           <input type="text" name="BookTitle" id="book-Title" />
           <textarea
