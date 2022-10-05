@@ -13,13 +13,28 @@ function updateDisplay(book) {
     .then(function (bookData) {
       titleUI.innerText = bookData.items[0].volumeInfo.title;
       descriptionUI.innerText = bookData.items[0].volumeInfo.description;
-      let bookCover = bookData.items[0].volumebInfo.imageLinks.thumbnail;
+      let bookCover = bookData.items[0].volumeInfo.imageLinks.thumbnail;
       coverUI.style.backgroundImage = `url(${bookCover})`;
       authorUi.innerText = bookData.items[0].volumeInfo.authors;
       ratingUI.innerText = `${bookData.items[0].volumeInfo.averageRating}/5`;
-      console.log(bookData.items[0].volumeInfo.averageRating);
+
+      if (bookData.items[0].volumeInfo.averageRating === undefined) {
+        ratingUI.innerText = "0/5";
+      }
+      if (bookData.items[0].volumeInfo.imageLinks.thumbnail === undefined) {
+        coverUI.style.backgroundImage =
+          "linear-gradient(90deg, rgba(63,94,251,1) 0%, rgba(24,36,95,1) 0%, rgba(0,0,0,1) 83%)";
+      }
+      if (bookData.items[0].volumeInfo.description === undefined) {
+        descriptionUI.innerText = "Unknown Description";
+      }
+      if (bookData.items[0].volumeInfo.authors === undefined) {
+        authorUi.innerText = "Unknown Author";
+      }
     })
-    .catch((error) => console.log("There is an ERROR!"));
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 const signedInNav = document.querySelector(".signedIn");

@@ -1,4 +1,3 @@
-
 //Uses a book title to return an object containing information about the book.
 
 //To Do : Add a more specific way to search for books
@@ -9,7 +8,7 @@ export async function getBookData(bookTitle) {
     ${bookTitle}`,
     { mode: "cors" }
   );
-
+  console.log(bookData);
   const data = await bookData.json();
 
   return data;
