@@ -92,6 +92,7 @@ const homeBtn = document.querySelector(".homeBtn");
 const reviewBtn = document.querySelector(".myReviewBtn");
 const bookSearchContainer = document.querySelector("#bookSearchContainer");
 const userReviewContainer = document.querySelector("#userReviewContainer");
+const searchBar = document.querySelector(".descriptionNav");
 
 homeBtn.addEventListener("click", showBookDescription);
 reviewBtn.addEventListener("click", showMyReviews);
@@ -99,6 +100,7 @@ reviewBtn.addEventListener("click", showMyReviews);
 function showMyReviews() {
   //Hide book description
   bookSearchContainer.style.display = "none";
+  searchBar.style.visibility = "hidden";
 
   //Show my reviews
   userReviewContainer.style.display = "flex";
@@ -110,6 +112,7 @@ function showBookDescription() {
 
   //Show book description
   bookSearchContainer.style.display = "grid";
+  searchBar.style.visibility = "visible";
 }
 export {
   updateDisplay,
